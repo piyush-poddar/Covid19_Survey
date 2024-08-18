@@ -1,0 +1,6 @@
+# ignore all files in any directory __pycache__
+__pycache__/
+
+# ignore the following files
+Pipfile
+Pipfile.lock
