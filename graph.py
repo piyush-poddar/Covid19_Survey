@@ -1,4 +1,5 @@
 
+
 from mysql.connector import MySQLConnection, Error
 from python_mysql_dbconfig import read_db_config
 import matplotlib
@@ -37,7 +38,6 @@ def connect():
         print(error)
 
     # finally:
-    # My friend Digpal
     #     if conn is not None and conn.is_connected():
     #         conn.close()
     #         print('Connection closed.')
@@ -81,13 +81,10 @@ def survey_analysis_01():
 
     # data_list = survey_data()
 
-    # data_list = survey_data()
-
-    # question_list = ['question1', 'question2', 'question3']
     question_list = ['question1', 'question2', 'question3', 'question5', 
                       'question8', 'question9', 'question10']
     for question in question_list:
-        print(question)
+        # print(question)
         cursor = conn.cursor()
         cursor.execute("SET AUTOCOMMIT = 1")
         # cursor.execute("select question1 from survey_new")
@@ -105,50 +102,44 @@ def survey_analysis_01():
         #final_data_01 = sorted(list_data_listout, reverse=True)
         final_data_01 = ['Yes', 'Sometimes', 'No']
 
-        print(data_listout)
-        print(final_data_01)
+        # print(data_listout)
+        # print(final_data_01)
 
-        print("Total Survey Given : ", len(data_listout))
+        # print("Total Survey Given : ", len(data_listout))
         total_data_count = len(data_listout)
 
-        print("Yes : ", data_listout.count('Yes'))
-        print("Sometimes : ", data_listout.count('Sometimes'))
-        # print("Sometimes/Maybe : ", data_listout.count('Sometimes/Maybe'))
-        print("No : ", data_listout.count('No'))
+        # print("Yes : ", data_listout.count('Yes'))
+        # print("Sometimes : ", data_listout.count('Sometimes'))
+        # print("No : ", data_listout.count('No'))
         
 
         yes_count = data_listout.count('Yes')
         sometimes_count = data_listout.count('Sometimes')
-        # somemaybe_count = data_listout.count('Sometimes/Maybe')
         no_count = data_listout.count('No')
         
         value_count = [yes_count, sometimes_count, no_count]
-        print("Value Count: ", value_count)        
+        # print("Value Count: ", value_count)        
 
         yes_percentage = (yes_count / total_data_count) * 100
         sometimes_percentage = (sometimes_count / total_data_count) * 100
-        # somemaybe_percentage = (somemaybe_count / total_data_count) * 100
         no_percentage = (no_count / total_data_count) * 100
         
-        # print(yes_percentage)
 
         yes_percentage = round(yes_percentage, 2)
         no_percentage = round(no_percentage, 2)
         sometimes_percentage = round(sometimes_percentage, 2 )
-        # somemaybe_percentage = float(somemaybe_percentage)
 
-        print("\nPercentage of 'Yes' in {} : ".format(question), yes_percentage)
-        print("Percentage of 'Sometimes' in {} : ".format(question), sometimes_percentage)
-        # print("\nPercentage of 'Sometimes/Maybe' in Question1 : ", float(somemaybe_percentage))
-        print("Percentage of 'No' in {} : ".format(question), no_percentage)
+        # print("\nPercentage of 'Yes' in {} : ".format(question), yes_percentage)
+        # print("Percentage of 'Sometimes' in {} : ".format(question), sometimes_percentage)
+        # print("Percentage of 'No' in {} : ".format(question), no_percentage)
         
         # For Graph - list_percentage_data_01
         list_percentage_data_01 = [yes_percentage , sometimes_percentage, no_percentage ]
-        print("List Percentage:", list_percentage_data_01)
+        # print("List Percentage:", list_percentage_data_01)
 
         # For Graph - list_colors_data_01
         list_colors_data_01 = ['green', 'yellow', 'red']
-        print(list_colors_data_01)
+        # print(list_colors_data_01)
 
         
 
@@ -231,19 +222,16 @@ def survey_analysis_01():
         # plt.show()
         plt.clf()
 
-        print("\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n")
+        # print("\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n")
 
 def survey_analysis_02():
     """ Analyse Data From Mysql """
 
     # data_list = survey_data()
 
-    # data_list = survey_data()
-
-    # question_list = ['question1', 'question2', 'question3']
     question_list = ['question4', 'question6', 'question7']
     for question in question_list:
-        print(question)
+        # print(question)
         cursor = conn.cursor()
         cursor.execute("SET AUTOCOMMIT = 1")
         # cursor.execute("select question1 from survey_new")
@@ -258,55 +246,49 @@ def survey_analysis_02():
         set_data_listout = set(data_listout)
         list_data_listout = list(set_data_listout)
         # For Graph - final_data_01
-        #final_data_01 = sorted(list_data_listout, reverse=True)
+        # final_data_01 = sorted(list_data_listout, reverse=True)
         final_data_01 = ['Yes', 'Sometimes/Maybe', 'No']
 
-        print(data_listout)
-        print("final data",final_data_01)
+        # print(data_listout)
+        # print("final data",final_data_01)
 
-        print("Total Survey Given : ", len(data_listout))
+        # print("Total Survey Given : ", len(data_listout))
         total_data_count = len(data_listout)
 
-        print("Yes : ", data_listout.count('Yes'))
-        # print("Sometimes : ", data_listout.count('Sometimes'))
-        print("Sometimes/Maybe : ", data_listout.count('Sometimes/Maybe'))
-        print("No : ", data_listout.count('No'))
+        # print("Yes : ", data_listout.count('Yes'))
+        # print("Sometimes/Maybe : ", data_listout.count('Sometimes/Maybe'))
+        # print("No : ", data_listout.count('No'))
         
 
         yes_count = data_listout.count('Yes')
-        # sometimes_count = data_listout.count('Sometimes')
         somemaybe_count = data_listout.count('Sometimes/Maybe')
         no_count = data_listout.count('No')
 
         value_count = [yes_count, somemaybe_count, no_count]
-        print("Value Count: ", value_count)             
+        # print("Value Count: ", value_count)             
         
 
         yes_percentage = (yes_count / total_data_count) * 100
-        # sometimes_percentage = (sometimes_count / total_data_count) * 100
         somemaybe_percentage = (somemaybe_count / total_data_count) * 100
         no_percentage = (no_count / total_data_count) * 100
         
-        # print(yes_percentage)
 
         yes_percentage = round(yes_percentage, 2)
-        # sometimes_percentage = float(sometimes_percentage)
         somemaybe_percentage = round(somemaybe_percentage, 2)
         no_percentage = round(no_percentage, 2)
 
 
-        print("\nPercentage of 'Yes' in {} : ".format(question), yes_percentage)
-        # print("\nPercentage of 'Sometimes' in Question1 : ", float(sometimes_percentage))
-        print("Percentage of 'Sometimes/Maybe' in {} : ".format(question), somemaybe_percentage)
-        print("Percentage of 'No' in {} : ".format(question), no_percentage)
+        # print("\nPercentage of 'Yes' in {} : ".format(question), yes_percentage)
+        # print("Percentage of 'Sometimes/Maybe' in {} : ".format(question), somemaybe_percentage)
+        # print("Percentage of 'No' in {} : ".format(question), no_percentage)
         
         # For Graph - list_percentage_data_01
         list_percentage_data_01 = [yes_percentage , somemaybe_percentage , no_percentage]
-        print(list_percentage_data_01)
+        # print(list_percentage_data_01)
 
         # For Graph - list_colors_data_01
         list_colors_data_01 = ['green', 'yellow', 'red']
-        print(list_colors_data_01)
+        # print(list_colors_data_01)
 
 
         # Plot_01
@@ -365,7 +347,7 @@ def survey_analysis_02():
         # plt.show()
         plt.clf()
     
-        print("\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n")     
+        # print("\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n")     
 
 def close_connection():
     """ Close DB Connection """
